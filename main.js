@@ -54,7 +54,7 @@ async function getStocks(cName) {
                     .waitForSelector(`a[title="Page ${index + 1}"]`, {visible: true})
                     .then(() => console.log('Next page loaded', index));
 
-            }
+           
 
             let PageNumberSelector = `a[title="Page ${index}"]`
 
@@ -78,6 +78,7 @@ async function getStocks(cName) {
             fs.writeFile(`./stockDetails/${cName}/data${index}.csv`, csvresult, (err) => {
                 console.log(err || "done");
             });
+        }
             if (index < Maxpage) {
                 await page.click(`a[title="Page ${index + 1}"]`);
             }
@@ -92,4 +93,4 @@ async function getStocks(cName) {
     }
 
 }
-getStocks("MEGA")
+getStocks("EBL")
